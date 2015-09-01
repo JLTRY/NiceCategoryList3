@@ -11,3 +11,9 @@ This version work with **Mediawiki 1.25.1 and php 5.6.9**
 )
 ###Changes:
 * & deleted in lines 188 and 205
+
+####Example
+[Wiki Test](http://wikitest.lobotomie.org/index.php/Liste_Labomedia)
+
+####Comments
+Cette extension permet de créer des listes de pages vachement interressante, pour peu que l'arborescence des catégories soit bien construite et les pages bien catégorisées !
