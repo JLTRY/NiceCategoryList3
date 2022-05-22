@@ -37,32 +37,9 @@
  *  ----------- -------   ------------------------------------------------------
  */
  
-  if (!defined('MEDIAWIKI')) die();
- 
-/*  define( 'NICE_CATEGORY_LIST_VERSION', '2.2.3' );
-  $wgExtensionFunctions[] = 'wfNiceCategoryList';
-  $wgExtensionCredits['parserhook'][] = array(
-    'path'            => __FILE__,
-    'name'            => 'NiceCategoryList',
-    'version'         => NICE_CATEGORY_LIST_VERSION,
-    'author'          => 'Kichik, Johan the Ghost, [http://www.mediawiki.org/wiki/User:*Surak* *Surak*]',
-    'url'             => 'http://www.mediawiki.org/wiki/Extension:NiceCategoryList2',
-    'description' => 'Generates a category list showing all subcategories and pages in a category.'
-  );
- 
- $wgResourceModules += array(
-	'ext.nc' => [		
-		'styles' => 'NiceCategoryList.css',
-		'localBasePath' => __DIR__ ,
-		'remoteExtPath' => 'NiceCategoryList'
-	] );
+ if (!defined('MEDIAWIKI')) die();
+use MediaWiki\MediaWikiServices; 
 
-# Set global default values.
-  $egNiceCategoryListDisableCache = false;
-  $egNiceCategoryListHeadStart    = 2;
-  $egNiceCategoryListShowFirst    = 0;
-  $egNiceCategoryListInstallDir   = "NiceCategoryList2";
-*/
 class NiceCategoryListParser { 
 # Set parser hook for <ncl></ncl> Nice Category List extension.           
   static public function Setup($Parser) {
@@ -320,9 +297,10 @@ class NiceCategoryList {
 //  Generate Output
 ////////////////////////////////////////////////////////////////////////////////
  
-    function outputCategory($category, $level = 0) {
-        global $wgContLang;
+    function outputCategory($category, $level = 0) {        
         global $egNiceCategoryListHeadStart, $egNiceCategoryListShowFirst;
+		//According to: https://www.mediawiki.org/wiki/Manual:$wgContLang
+		$wgContLang = MediaWikiServices::getInstance()->getContentLanguage();
  
         // New category
         $output = '';
