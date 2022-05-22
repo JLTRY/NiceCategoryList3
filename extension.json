@@ -1,0 +1,34 @@
+{
+	"name": "NiceCategoryList3",
+	"version": "2.2.5",
+	"author": [
+		"Kichik, Johan the Ghost",
+		"JLTRY"
+	],
+	"url":  "http://www.mediawiki.org/wiki/Extension:NiceCategoryList3",
+	"descriptionmsg": "Generates a category list showing all subcategories and pages in a category.",
+	"namemsg": "smw-title",
+	"license-name": "GPL-2.0-or-later",
+	"type": "semantic",
+	"requires": {
+		"MediaWiki": ">= 1.31"
+	},
+	"MessagesDirs": {
+		"NiceCategoryList": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"NiceCategoryListParser": "NiceCategoryList.php"
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "NiceCategoryListParser::Setup"
+	},
+	"ResourceModules": {
+		"ext.nc": {
+			"styles": "NiceCategoryList.css"
+		}
+	},
+	"load_composer_autoloader": true,
+	"manifest_version": 1
+}
