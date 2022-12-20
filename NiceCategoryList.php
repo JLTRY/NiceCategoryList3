@@ -284,11 +284,9 @@ class NiceCategoryList {
  
         // convert results list into an array
         $list = array();
-        while ($x = $dbr->fetchObject($res))
+        foreach ($res as $x) {
                 $list[] = $x;
- 
-        // free the results
-        $dbr->freeResult($res);
+	}
  
         return $list;
     }
