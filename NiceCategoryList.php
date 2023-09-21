@@ -298,8 +298,10 @@ class NiceCategoryList {
     function outputCategory($category, $level = 0) {        
         global $egNiceCategoryListHeadStart, $egNiceCategoryListShowFirst;
 		//According to: https://www.mediawiki.org/wiki/Manual:$wgContLang
-		$wgContLang = MediaWikiServices::getInstance()->getContentLanguage();
- 
+        $languageConverterFactory = MediaWikiServices::getInstance()->getLanguageConverterFactory();
+        $languageConverter = $languageConverterFactory->getLanguageConverter();
+
+
         // New category
         $output = '';
  
@@ -327,8 +329,8 @@ class NiceCategoryList {
         // otherwise, it is a bullet list item.
         $title = $category->getTitle();
         $ctitle = $title->getPrefixedText();
-		if (($title->getText() != NULL)&& $wgContLang) {
-			$title   = $wgContLang->convert($title->getText());
+		if (($title->getText() != NULL)&& $languageConverter) {
+			$title   = $languageConverter->convert($title->getText());
 			$link    = "[[:" . $ctitle . "|" . $title . "]]";
 		}
         if ($showfirst || $level > 0) {
@@ -350,7 +352,7 @@ class NiceCategoryList {
             $subCatTitles = $category->getCatTitles();
             foreach ($subCatTitles as $title) {
                 $ptitle   = $title->getPrefixedText();
-                $title    = $wgContLang->convert($title->getText());
+                $title    = $languageConverter->convert($title->getText());
                 $disp     = "<span class='ncl-subcategory'>[[:" . $ptitle . "|" . $title . "]]</span>";
                 $pieces[] = $disp;
             }
