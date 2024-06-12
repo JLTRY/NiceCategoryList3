@@ -1,13 +1,13 @@
 {
 	"name": "NiceCategoryList3",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"author": [
 		"Kichik, Johan the Ghost",
 		"JLTRY"
 	],
 	"url":  "http://www.mediawiki.org/wiki/Extension:NiceCategoryList3",
-	"descriptionmsg": "Generates a category list showing all subcategories and pages in a category.",
-	"namemsg": "smw-title",
+	"description": "Generates a category list showing all subcategories and pages in a category.",
+	"namemsg": "nice_category_list",
 	"license-name": "GPL-2.0-or-later",
 	"type": "semantic",
 	"requires": {
