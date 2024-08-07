@@ -168,8 +168,7 @@ class NiceCategoryList {
     return '<p>Failed to create title!</p>';
  
   # get the database handle, and get all the subcategory links for the given category
-    //$dbr = wfGetDB(DB_SLAVE);
-    $dbr = wfGetDB( DB_REPLICA );
+    $dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
     $catData = $this->searchCategory($dbr, $title, 0);
  
   # generate the category listing
