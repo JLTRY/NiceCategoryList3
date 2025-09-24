@@ -38,7 +38,8 @@
  */
  
  if (!defined('MEDIAWIKI')) die();
-use MediaWiki\MediaWikiServices; 
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 
 class NiceCategoryListParser { 
 # Set parser hook for <ncl></ncl> Nice Category List extension.           
