@@ -273,21 +273,20 @@ class NiceCategoryList {
     private function getCategoryLinks($dbr, $title) {
         // query database
         $res = $dbr->select(
-            array('page', 'categorylinks'),
+            array('page', 'categorylinks', 'linktarget'),
             array('page_title', 'page_namespace', 'cl_sortkey'),
-            array('cl_from = page_id', 'cl_to' => $title->getDBKey()),
+            array('cl_from = page_id', 'lt_title' => $title->getDBKey(), 'cl_target_id = lt_id'),
             '',
-            array('ORDER BY' => 'cl_sortkey')
+            array('ORDER BY' => 'cl_sortkey'),
         );
         if ($res === false)
-                return array();
+            return array();
  
         // convert results list into an array
         $list = array();
         foreach ($res as $x) {
-                $list[] = $x;
-	}
- 
+            $list[] = $x;
+        }
         return $list;
     }
  
